@@ -6,8 +6,8 @@ import renderHtml from './helpers/render';
 
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-  res.send(renderHtml());
+app.get('*', (req, res) => {
+  res.send(renderHtml(req));
 });
 
 app.listen(3000, () => {
