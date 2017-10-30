@@ -1,15 +1,13 @@
 import express from 'express';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
 
 const app = express();
 
-// Components
-import Home from './client/components/Home';
+import renderHtml from './helpers/render';
+
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  const content = renderToString(<Home />);
-  res.send(content);
+  res.send(renderHtml());
 });
 
 app.listen(3000, () => {
