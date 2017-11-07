@@ -10,4 +10,7 @@ const config = {
   }
 };
 
-module.exports = merge(baseWebpack, config);
+module.exports = env => {
+  console.log(env);
+  return merge(baseWebpack, config);
+}

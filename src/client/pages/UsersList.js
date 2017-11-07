@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchUsers } from '../actions';
+import { fetchUsers } from '../actions/index';
 
 class HomepageLayout extends Component {
   constructor (props) {
     super(props);
     this.state = {}
   }
-  componentWillMount () {
-    this.props.fetchUsers();
+
+  componentWillReceiveProps (nextProps) {
+    if (this.props.users !== nextProps.users) {
+      this.props.fetchUsers();
+    }
   }
 
   renderUsers() {
-    return this.props.users.map(  user => {
+    return this.props.users.map(user => {
       return <li key={user.id}>{user.name}</li>
     })
   }
@@ -31,4 +34,11 @@ function mapStateToProps (state) {
   return { users : state.users };
 }
 
-export default connect(mapStateToProps, { fetchUsers })(HomepageLayout)
+function loadData (store) {
+  return store.dispatch(fetchUsers());
+}
+
+export default {
+  loadData,
+  component : connect(mapStateToProps, { fetchUsers })(HomepageLayout),
+}
