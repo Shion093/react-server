@@ -1,6 +1,8 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
   // Tell webpack to run babel
-  module : {
+  module  : {
     rules : [
       {
         test    : /\.js?$/,
@@ -15,24 +17,27 @@ module.exports = {
             'es2015',
             'react',
             'stage-0',
-            ['env', {targets : {browsers : ['last 2 versions']}}]
+            ['env', { targets : { browsers : ['last 2 versions'] } }]
           ]
         }
       },
       {
-        test: /\.css$/,
-        loader: [ 'style-loader', 'css-loader' ]
+        test   : /\.css$/,
+        loader : ExtractTextPlugin.extract({
+          fallback : 'style-loader',
+          use      : 'css-loader'
+        })
       },
       {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {}
-          }
-        ]
+        test   : /\.(png|woff|woff2|eot|ttf|svg|jpg)$/,
+        loader : 'url-loader?limit=100000'
       },
-      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
-    ]
-  }
+    ],
+  },
+  plugins : [
+    new ExtractTextPlugin({
+      filename  : '[name].css',
+      allChunks : true
+    })
+  ],
 };
