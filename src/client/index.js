@@ -6,16 +6,21 @@ import { renderRoutes } from 'react-router-config';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
+import axios from 'axios';
 
 import 'semantic-ui-css/semantic.min.css';
 
 import Routes from './Routes';
 import reducers from './reducers';
 
+const axiosClient = axios.create({
+  baseURL : '/api',
+});
+
 const store = createStore(
   reducers,
   window.INITIAL_STATE,
-  applyMiddleware(thunk)
+  applyMiddleware(thunk.withExtraArgument(axiosClient)),
 );
 
 ReactDOM.hydrate(
