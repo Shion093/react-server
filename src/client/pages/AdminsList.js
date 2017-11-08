@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import _ from 'lodash';
 
 // Actions
@@ -29,6 +30,10 @@ class AdminsList extends Component {
   render () {
     return (
       <div>
+        <Helmet>
+          <title>Admins App</title>
+          <meta property="og:title" content="Admins App" />
+        </Helmet>
         Here's big list
         <ul>{this.renderUsers()}</ul>
       </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash';
+import { Helmet } from 'react-helmet';
 
 // Actions
 import { fetchUsers } from '../actions';
@@ -23,9 +24,19 @@ class HomepageLayout extends Component {
     })
   }
 
+  head () {
+    return (
+      <Helmet>
+        <title>{`(${this.props.users.length})  Users App`}</title>
+        <meta property="og:title" content="Users App" />
+      </Helmet>
+    )
+  }
+
   render () {
     return (
       <div>
+        { this.head() }
         Here's big list
         <ul>{this.renderUsers()}</ul>
       </div>

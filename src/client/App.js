@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { renderRoutes } from 'react-router-config';
 
 import TopMenu from './components/Menu';
