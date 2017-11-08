@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import _ from 'lodash';
+
+// Actions
 import { fetchUsers } from '../actions/index';
 
 class HomepageLayout extends Component {
@@ -8,8 +11,8 @@ class HomepageLayout extends Component {
     this.state = {}
   }
 
-  componentWillReceiveProps (nextProps) {
-    if (this.props.users !== nextProps.users) {
+  componentWillMount () {
+    if (_.isEmpty(this.props.users)) {
       this.props.fetchUsers();
     }
   }
