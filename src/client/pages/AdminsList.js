@@ -3,9 +3,12 @@ import { connect } from 'react-redux'
 import _ from 'lodash';
 
 // Actions
-import { fetchUsers } from '../actions';
+import { fetchAdmins } from '../actions';
 
-class HomepageLayout extends Component {
+// Components
+import requireAuth from '../components/hocs/requiereAuth';
+
+class AdminsList extends Component {
   constructor (props) {
     super(props);
     this.state = {}
@@ -13,13 +16,13 @@ class HomepageLayout extends Component {
 
   componentWillMount () {
     if (_.isEmpty(this.props.users)) {
-      this.props.fetchUsers();
+      this.props.fetchAdmins();
     }
   }
 
   renderUsers() {
-    return _.map(this.props.users, user => {
-      return <li key={user.id}>{user.name}</li>
+    return _.map(this.props.admins, admin => {
+      return <li key={admin.id}>{admin.name}</li>
     })
   }
 
@@ -34,14 +37,14 @@ class HomepageLayout extends Component {
 }
 
 function mapStateToProps (state) {
-  return { users : state.users };
+  return { admins : state.admins };
 }
 
 function loadData (store) {
-  return store.dispatch(fetchUsers());
+  return store.dispatch(fetchAdmins());
 }
 
 export default {
   loadData,
-  component : connect(mapStateToProps, { fetchUsers })(HomepageLayout),
+  component : connect(mapStateToProps, { fetchAdmins })(requireAuth(AdminsList)),
 }

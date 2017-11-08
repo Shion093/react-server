@@ -1,8 +1,8 @@
-import React from 'react';
 import App from './App';
-import Home from './pages/Home';
+import NotFound from './pages/NotFound';
 import Users from './pages/Users';
 import Users2 from './pages/UsersList';
+import Admins from './pages/AdminsList';
 
 export default [
   {
@@ -10,13 +10,21 @@ export default [
     routes : [
       {
         ...Users2,
-        path     : '/',
-        exact     : true,
+        path  : '/',
+        exact : true,
       },
       {
         ...Users,
         path : '/users',
       },
+      {
+        ...Admins,
+        path : '/admins',
+      },
+      {
+        ...NotFound,
+        path : '',
+      },
     ]
   },
-]
+];

@@ -53,7 +53,10 @@ class TopMenu extends Component {
     <Container>
       <Menu.Item as={Link} to='/' active={this.isActive('/')}>Home</Menu.Item>
       <Menu.Item as={Link} to='/users' active={this.isActive('/users')}>Users</Menu.Item>
-      <Menu.Item as={Link} to='/admins' active={this.isActive('/admin')}>Admins</Menu.Item>
+      {
+        this.props.auth &&
+        <Menu.Item as={Link} to='/admins' active={this.isActive('/admins')}>Admins</Menu.Item>
+      }
       {this.renderAuthButton()}
     </Container>
   );
