@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Container, Form, Header, Image, Menu, Modal, Segment, Visibility } from 'semantic-ui-react';
+import {
+  Button, Container, Form, Grid, Header, Image, Menu, Message, Modal, Segment,
+  Visibility
+} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -50,48 +53,115 @@ class TopMenu extends Component {
       {
         this.props.auth
           ? <Menu.Item className='item'>
-            <Button as='a' href='api/v1/auth/logout'>Log out</Button>
+            <Button as='a' href='api/v1/auth/logout' inverted>Log out</Button>
           </Menu.Item>
           : <Menu.Item className='item'>
-            <Modal trigger={<Button as='a'>Log In</Button>}>
-              <Modal.Content image>
-                <Modal.Description>
-                  <Header>Iniciar Sesion</Header>
-                </Modal.Description>
-                <Form onSubmit={this.handleSubmitLogin}>
-                  <Form.Group widths='equal'>
-                    <Form.Input placeholder='Email' name='email' value={this.state.email} onChange={this.handleChange} />
-                    <Form.Input placeholder='Password' name='password' value={this.state.password} onChange={this.handleChange} />
-                  </Form.Group>
-                  <Form.Button content='Submit' />
-                </Form>
-                <Button as='a'  href='api/v1/auth/google'>With Google</Button>
+            <Modal trigger={<Button as='a' inverted>Log In</Button>}>
+              <Modal.Content>
+                <Grid
+                  textAlign='center'
+                  style={{ height: '100%' }}
+                  verticalAlign='middle'
+
+                >
+                  <Grid.Column style={{ maxWidth: 450 }}>
+                    <Header as='h2' color='teal' textAlign='center'>
+                      <Image src='/logo.png' />
+                      {' '}Log-in to your account
+                    </Header>
+                    <Form size='large' onSubmit={this.handleSubmitLogin}>
+                      <Segment stacked>
+                        <Form.Input
+                          fluid
+                          icon='user'
+                          iconPosition='left'
+                          placeholder='E-mail address'
+                          name='email'
+                          value={this.state.email}
+                          onChange={this.handleChange}
+                        />
+                        <Form.Input
+                          fluid
+                          icon='lock'
+                          iconPosition='left'
+                          placeholder='Password'
+                          type='password'
+                          name='password'
+                          value={this.state.password}
+                          onChange={this.handleChange}
+                        />
+                        <Form.Button color='teal' fluid size='large'>Login</Form.Button>
+                      </Segment>
+                    </Form>
+                    <Message>
+                      New to us? <a href='#'>Sign Up</a>
+                    </Message>
+                    <Button as='a' href='api/v1/auth/google'>With Google</Button>
+                  </Grid.Column>
+                </Grid>
               </Modal.Content>
             </Modal>
           </Menu.Item>
       }
       {
         !this.props.auth &&
-        <Menu.Item>`
+        <Menu.Item>
           <Modal trigger={<Button as='a' primary>Sign Up</Button>}>
-            <Modal.Header>Select a Photo</Modal.Header>
-            <Modal.Content image>
-              <Image wrapped size='medium' src='/assets/images/avatar/large/rachel.png' />
-              <Modal.Description>
-                <Header>Default Profile Image</Header>
-                <p>We've found the following gravatar image associated with your e-mail address.</p>
-                <p>Is it okay to use this photo?</p>
-              </Modal.Description>
-              <Form onSubmit={this.handleSubmit}>
-                <Form.Group widths='equal'>
-                  <Form.Input placeholder='Name' name='name' value={this.state.name} onChange={this.handleChange} />
-                  <Form.Input placeholder='Email' name='email' value={this.state.email} onChange={this.handleChange} />
-                  <Form.Input placeholder='Password' name='password' value={this.state.password} onChange={this.handleChange} />
-                  <Form.Input placeholder='Phone'  name='phone' value={this.state.phone} onChange={this.handleChange} />
-                </Form.Group>
-                <Form.Checkbox label='I agree to the Terms and Conditions' />
-                <Form.Button content='Submit' />
-              </Form>
+            <Modal.Content>
+              <Grid
+                textAlign='center'
+                style={{ height: '100%' }}
+                verticalAlign='middle'
+              >
+                <Grid.Column style={{ maxWidth: 450 }}>
+                    <Modal.Description>
+                      <Header>Crear cuenta</Header>
+                    </Modal.Description>
+                    <Segment stacked>
+                      <Form onSubmit={ this.handleSubmit } size='large'>
+                        <Form.Input
+                          fluid
+                          icon='user'
+                          iconPosition='left'
+                          placeholder='Name'
+                          name='name'
+                          value={ this.state.name }
+                          onChange={ this.handleChange }
+                        />
+                        <Form.Input
+                          fluid
+                          icon='user'
+                          iconPosition='left'
+                          placeholder='Email'
+                          name='email'
+                          value={ this.state.email }
+                          onChange={ this.handleChange }
+                        />
+                        <Form.Input
+                          fluid
+                          icon='user'
+                          iconPosition='left'
+                          placeholder='Password'
+                          name='password'
+                          value={ this.state.password }
+                          onChange={ this.handleChange
+                          }/>
+                        <Form.Input
+                          fluid
+                          icon='user'
+                          iconPosition='left'
+                          placeholder='Phone'
+                          name='phone'
+                          value={ this.state.phone }
+                          onChange={ this.handleChange }
+                        />
+                        <Form.Checkbox label='I agree to the Terms and Conditions'/>
+                        <Form.Button color='teal' fluid size='large'>Crear</Form.Button>
+                      </Form>
+                    </Segment>
+                </Grid.Column>
+              </Grid>
+
             </Modal.Content>
           </Modal>
         </Menu.Item>
