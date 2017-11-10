@@ -14,7 +14,7 @@ import Routes from './Routes';
 import reducers from './reducers';
 
 const axiosClient = axios.create({
-  baseURL : '/api',
+  baseURL : '/api/v1',
 });
 
 const store = createStore(

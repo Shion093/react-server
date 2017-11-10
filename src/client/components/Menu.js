@@ -1,17 +1,34 @@
 import React, { Component } from 'react';
-import { Button, Container, Menu, Segment, Visibility } from 'semantic-ui-react';
+import { Button, Container, Form, Header, Image, Menu, Modal, Segment, Visibility } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+// Actions
+import { createUser, loginUser } from '../actions';
 
 class TopMenu extends Component {
   constructor (props) {
     super(props);
-    this.state = {}
+    this.state = {
+      name : '',
+      email : '',
+      phone : '',
+      password : '',
+    }
   }
 
   hideFixedMenu = () => this.setState({ visible : false });
   showFixedMenu = () => this.setState({ visible : true });
   isActive = (path) => this.props.currentRoute === path;
+  handleChange = (e, { name, value }) => this.setState({ [name]: value });
+
+  handleSubmit = () => {
+    this.props.createUser(this.state);
+  }
+
+  handleSubmitLogin = () => {
+    this.props.loginUser(this.state);
+  }
 
   renderFixedMenu = (visible) => {
     if (visible) return (
@@ -33,16 +50,50 @@ class TopMenu extends Component {
       {
         this.props.auth
           ? <Menu.Item className='item'>
-            <Button as='a' href='/api/logout'>Log out</Button>
+            <Button as='a' href='api/v1/auth/logout'>Log out</Button>
           </Menu.Item>
           : <Menu.Item className='item'>
-            <Button as='a' href='/api/auth/google'>Log in</Button>
+            <Modal trigger={<Button as='a'>Log In</Button>}>
+              <Modal.Content image>
+                <Modal.Description>
+                  <Header>Iniciar Sesion</Header>
+                </Modal.Description>
+                <Form onSubmit={this.handleSubmitLogin}>
+                  <Form.Group widths='equal'>
+                    <Form.Input placeholder='Email' name='email' value={this.state.email} onChange={this.handleChange} />
+                    <Form.Input placeholder='Password' name='password' value={this.state.password} onChange={this.handleChange} />
+                  </Form.Group>
+                  <Form.Button content='Submit' />
+                </Form>
+                <Button as='a'  href='api/v1/auth/google'>With Google</Button>
+              </Modal.Content>
+            </Modal>
           </Menu.Item>
       }
       {
         !this.props.auth &&
-        <Menu.Item>
-          <Button as='a' primary>Sign Up</Button>
+        <Menu.Item>`
+          <Modal trigger={<Button as='a' primary>Sign Up</Button>}>
+            <Modal.Header>Select a Photo</Modal.Header>
+            <Modal.Content image>
+              <Image wrapped size='medium' src='/assets/images/avatar/large/rachel.png' />
+              <Modal.Description>
+                <Header>Default Profile Image</Header>
+                <p>We've found the following gravatar image associated with your e-mail address.</p>
+                <p>Is it okay to use this photo?</p>
+              </Modal.Description>
+              <Form onSubmit={this.handleSubmit}>
+                <Form.Group widths='equal'>
+                  <Form.Input placeholder='Name' name='name' value={this.state.name} onChange={this.handleChange} />
+                  <Form.Input placeholder='Email' name='email' value={this.state.email} onChange={this.handleChange} />
+                  <Form.Input placeholder='Password' name='password' value={this.state.password} onChange={this.handleChange} />
+                  <Form.Input placeholder='Phone'  name='phone' value={this.state.phone} onChange={this.handleChange} />
+                </Form.Group>
+                <Form.Checkbox label='I agree to the Terms and Conditions' />
+                <Form.Button content='Submit' />
+              </Form>
+            </Modal.Content>
+          </Modal>
         </Menu.Item>
       }
     </Menu.Menu>
@@ -87,4 +138,4 @@ function mapStateToProps ({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps)(TopMenu);
+export default connect(mapStateToProps, { createUser, loginUser })(TopMenu);

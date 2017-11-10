@@ -14,7 +14,7 @@ class HomepageLayout extends Component {
 
   componentWillMount () {
     if (_.isEmpty(this.props.users)) {
-      this.props.fetchUsers();
+      // this.props.fetchUsers();
     }
   }
 
@@ -49,7 +49,7 @@ function mapStateToProps (state) {
 }
 
 function loadData (store) {
-  return store.dispatch(fetchUsers());
+  // return store.dispatch(fetchUsers());
 }
 
 export default {
