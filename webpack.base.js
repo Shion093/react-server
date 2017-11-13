@@ -1,7 +1,7 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  // Tell webpack to run babel
+  devtool : 'source-map',
   module  : {
     rules : [
       {

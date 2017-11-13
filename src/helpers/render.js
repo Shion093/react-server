@@ -25,12 +25,14 @@ export default (req, store, context) => {
       <head>
       ${helmet.title.toString()}
       ${helmet.meta.toString()}
-       <link rel="stylesheet" href="main.css">
+       <link rel="stylesheet" href="bundle.css">
+       <link rel="stylesheet" href="vendor.css">
       </head>
       <body>
         <div id="root">${content}</div>
         <script>window.INITIAL_STATE = ${serialize(store.getState())}</script>
       </body>
+      <script src="vendor.js"></script>
       <script src="bundle.js"></script>
     </html>
 `;

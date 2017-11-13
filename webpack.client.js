@@ -4,9 +4,11 @@ const baseWebpack = require('./webpack.base');
 const baseWebpackProd = require('./webpack.base.prod');
 
 const config = {
-  entry : './src/client/index.js',
+  entry: {
+    bundle: path.resolve(__dirname, 'src/client/index.js')
+  },
   output : {
-    filename : 'bundle.js',
+    filename : '[name].js',
     path     : path.resolve(__dirname, 'public')
   }
 };
