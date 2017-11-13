@@ -1,7 +1,7 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+// const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
@@ -15,7 +15,6 @@ module.exports = {
           plugins : [
             'transform-decorators-legacy',
             'transform-class-properties',
-            'lodash',
             'transform-react-constant-elements',
             'transform-react-inline-elements'
           ],
@@ -50,14 +49,17 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new LodashModuleReplacementPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new ExtractTextPlugin({
+      filename  : '[name].css',
+      allChunks : true
+    }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       output: {
         comments: false,
       },
     }),
-    new webpack.optimize.AggressiveMergingPlugin(),
     new CompressionPlugin({
       asset     : '[path].gz[query]',
       algorithm : 'gzip',
@@ -65,9 +67,5 @@ module.exports = {
       threshold : 10240,
       minRatio  : 0.8
     }),
-    new ExtractTextPlugin({
-      filename  : '[name].css',
-      allChunks : true
-    })
   ],
 };
