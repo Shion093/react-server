@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // Actions
-import { createUser, loginUser } from '../actions';
+import { createUser, loginUser } from '../../actions/index';
+
+import './style.less';
 
 class TopMenu extends Component {
   constructor (props) {
@@ -35,7 +37,7 @@ class TopMenu extends Component {
 
   renderFixedMenu = (visible) => {
     if (visible) return (
-      <Menu fixed='top' size='large'>
+      <Menu fixed='top' inverted size='large'>
         {this.renderMenuItems()}
       </Menu>
     );
@@ -45,6 +47,7 @@ class TopMenu extends Component {
           {this.renderMenuItems()}
         </Menu>
       </Container>
+
     );
   };
 
@@ -53,10 +56,10 @@ class TopMenu extends Component {
       {
         this.props.auth
           ? <Menu.Item className='item'>
-            <Button as='a' href='api/v1/auth/logout' inverted>Log out</Button>
+            <Button as='a' href='api/v1/auth/logout' inverted>Cerrar Sesion</Button>
           </Menu.Item>
           : <Menu.Item className='item'>
-            <Modal trigger={<Button as='a' inverted>Log In</Button>}>
+            <Modal trigger={<Button as='a' inverted>Iniciar Session</Button>}>
               <Modal.Content>
                 <Grid
                   textAlign='center'
@@ -66,7 +69,6 @@ class TopMenu extends Component {
                 >
                   <Grid.Column style={{ maxWidth: 450 }}>
                     <Header as='h2' color='teal' textAlign='center'>
-                      <Image src='/logo.png' />
                       {' '}Log-in to your account
                     </Header>
                     <Form size='large' onSubmit={this.handleSubmitLogin}>
@@ -90,13 +92,13 @@ class TopMenu extends Component {
                           value={this.state.password}
                           onChange={this.handleChange}
                         />
-                        <Form.Button color='teal' fluid size='large'>Login</Form.Button>
+                        <Form.Button color='teal' fluid size='large'>Iniciar Sesion</Form.Button>
                       </Segment>
                     </Form>
                     <Message>
                       New to us? <a href='#'>Sign Up</a>
                     </Message>
-                    <Button as='a' href='api/v1/auth/google'>With Google</Button>
+                    <Button as='a' href='api/v1/auth/google'>Con Google</Button>
                   </Grid.Column>
                 </Grid>
               </Modal.Content>
@@ -106,7 +108,7 @@ class TopMenu extends Component {
       {
         !this.props.auth &&
         <Menu.Item>
-          <Modal trigger={<Button as='a' primary>Sign Up</Button>}>
+          <Modal trigger={<Button as='a' inverted>Sign Up</Button>}>
             <Modal.Content>
               <Grid
                 textAlign='center'
@@ -182,25 +184,26 @@ class TopMenu extends Component {
     </Container>
   );
 
-  render() {
+  render () {
     const { visible } = this.state;
     return (
-      <div>
+      <div id='MenuStyle'>
         { visible && this.renderFixedMenu(visible) }
         <Visibility
-          onBottomPassed={this.showFixedMenu}
-          onBottomVisible={this.hideFixedMenu}
-          once={false}>
+          onBottomPassed={ this.showFixedMenu }
+          onBottomVisible={ this.hideFixedMenu }
+          once={ false }>
           <Segment
             inverted
             textAlign='center'
-            style={{ padding: '1em 0em' }}
+            style={ { padding : '1em 0em' } }
+            className='active-menu'
             vertical>
-            { this.renderFixedMenu(visible) }
+              { this.renderFixedMenu(visible) }
           </Segment>
         </Visibility>
       </div>
-    )
+    );
   }
 }
 

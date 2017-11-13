@@ -11,6 +11,8 @@ import {
   Segment,
 } from 'semantic-ui-react';
 
+import './style.less';
+
 class Home extends Component {
   constructor (props) {
     super(props);
@@ -21,31 +23,41 @@ class Home extends Component {
     const { visible } = this.state
 
     return (
-      <div>
-        <Segment
-          inverted
-          textAlign='center'
-          style={{ minHeight : 700, padding : '1em 0em' }}
-          vertical>
-          <Container text>
-            <Header
-              as='h1'
-              content='Cabinas y Cabanas El Canaveral'
-              inverted
-              style={{ fontSize : '4em', fontWeight : 'normal', marginBottom : 0, marginTop : '3em' }}
-            />
-            <Header
-              as='h2'
-              content='Do whatever you want when you want to.'
-              inverted
-              style={{ fontSize : '1.7em', fontWeight : 'normal' }}
-            />
-            <Button primary size='huge'>
-              Get Started
-              <Icon name='right arrow'/>
-            </Button>
-          </Container>
-        </Segment>
+      <div id='Home'>
+          <Segment
+            inverted
+            textAlign='center'
+            style={{minHeight : 700, padding : '1em 0em' }}
+            className='title'
+            vertical>
+            <Container text>
+              <Header
+                as='h1'
+                inverted
+                style={{ fontSize : '4em', fontWeight : 'normal', marginBottom : 0, marginTop : '3em' }}
+              >
+                Cabinas y Cabanas
+              </Header>
+              <Header
+                as='h1'
+                inverted
+                style={{ fontSize : '6em', marginBottom : 0 ,marginTop : 0}}
+              >
+               Canaveral
+              </Header>
+              <Header
+                as='h2'
+                content='Do whatever you want when you want to.'
+                inverted
+                style={{ fontSize : '1.7em', fontWeight : 'normal' }}
+              />
+              <Button primary size='huge'>
+                Get Started
+                <Icon name='right arrow'/>
+              </Button>
+            </Container>
+          </Segment>
+
 
         <Segment style={{ padding : '8em 0em' }} vertical>
           <Grid container stackable verticalAlign='middle'>

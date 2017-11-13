@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { renderRoutes } from 'react-router-config';
 
-import TopMenu from './components/Menu';
+import TopMenu from './components/Menu/index';
 import { fetchCurrentUser } from './actions';
 
 class App extends Component {

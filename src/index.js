@@ -2,12 +2,17 @@ import 'babel-polyfill';
 import express from 'express';
 import { matchRoutes } from 'react-router-config';
 import proxy from 'express-http-proxy';
+import compression from 'compression';
 
 import renderHtml from './helpers/render';
 import createStore from './helpers/createStore';
 import Routes from './client/Routes';
 
 const app = express();
+
+app.use(compression({
+  level : 6,
+}));
 
 app.use('/api', proxy('http://localhost:7777/v1'));
 
@@ -37,6 +42,12 @@ app.get('*', (req, res) => {
     res.send(content);
   })
 });
+
+// app.get('*.js', function (req, res, next) {
+//   req.url = req.url + '.gz';
+//   res.set('Content-Encoding', 'gzip');
+//   next();
+// });
 
 app.listen(3000, () => {
   console.log('listening on port 3000')
