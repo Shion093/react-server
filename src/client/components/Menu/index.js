@@ -56,6 +56,7 @@ class TopMenu extends Component {
       {
         this.props.auth
           ? <Menu.Item className='item'>
+            <Image avatar src={this.props.auth.profile} />
             <Button as='a' href='api/v1/auth/logout' inverted>Cerrar Sesion</Button>
           </Menu.Item>
           : <Menu.Item className='item'>
@@ -182,6 +183,7 @@ class TopMenu extends Component {
 
   render () {
     const { visible } = this.state;
+    console.log();
     return (
       <div id='MenuStyle'>
         { visible && this.renderFixedMenu(visible) }
