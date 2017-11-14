@@ -64,9 +64,7 @@ class TopMenu extends Component {
                 <Grid
                   textAlign='center'
                   style={{ height: '100%' }}
-                  verticalAlign='middle'
-
-                >
+                  verticalAlign='middle'>
                   <Grid.Column style={{ maxWidth: 450 }}>
                     <Header as='h2' color='teal' textAlign='center'>
                       {' '}Log-in to your account
@@ -113,8 +111,7 @@ class TopMenu extends Component {
               <Grid
                 textAlign='center'
                 style={{ height: '100%' }}
-                verticalAlign='middle'
-              >
+                verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <Modal.Description>
                       <Header>Crear cuenta</Header>
@@ -163,7 +160,6 @@ class TopMenu extends Component {
                     </Segment>
                 </Grid.Column>
               </Grid>
-
             </Modal.Content>
           </Modal>
         </Menu.Item>
@@ -174,8 +170,8 @@ class TopMenu extends Component {
 
   renderMenuItems = () => (
     <Container>
-      <Menu.Item as={Link} to='/' active={this.isActive('/')}>Home</Menu.Item>
-      <Menu.Item as={Link} to='/users' active={this.isActive('/users')}>Users</Menu.Item>
+      <Menu.Item as={Link} to='/' active={this.isActive('/')}>Inicio</Menu.Item>
+      <Menu.Item as={Link} to='/users' active={this.isActive('/users')}>Galeria</Menu.Item>
       {
         this.props.auth &&
         <Menu.Item as={Link} to='/admins' active={this.isActive('/admins')}>Admins</Menu.Item>

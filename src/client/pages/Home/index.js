@@ -13,6 +13,8 @@ import {
 
 import './style.less';
 
+import bathImg from './cabin-bath.jpg';
+
 class Home extends Component {
   constructor (props) {
     super(props);
@@ -20,11 +22,11 @@ class Home extends Component {
   }
 
   render () {
-    const { visible } = this.state
+    const { visible } = this.state;
 
     return (
       <div id='Home'>
-          <Segment
+        <Segment
             inverted
             textAlign='center'
             style={{minHeight : 700, padding : '1em 0em' }}
@@ -34,27 +36,21 @@ class Home extends Component {
               <Header
                 as='h1'
                 inverted
-                style={{ fontSize : '4em', fontWeight : 'normal', marginBottom : 0, marginTop : '3em' }}
-              >
+                style={{ fontSize : '4em', fontWeight : 'normal', marginBottom : 0, marginTop : '3em' }}>
                 Cabinas y Cabanas
               </Header>
               <Header
                 as='h1'
                 inverted
-                style={{ fontSize : '6em', marginBottom : 0 ,marginTop : 0}}
-              >
+                style={{ fontSize : '6em', marginBottom : 0 ,marginTop : 0}}>
                Canaveral
               </Header>
               <Header
                 as='h2'
-                content='Do whatever you want when you want to.'
+                content='Lugar perfecto para descansar'
                 inverted
                 style={{ fontSize : '1.7em', fontWeight : 'normal' }}
               />
-              <Button primary size='huge'>
-                Get Started
-                <Icon name='right arrow'/>
-              </Button>
             </Container>
           </Segment>
 
@@ -63,14 +59,13 @@ class Home extends Component {
           <Grid container stackable verticalAlign='middle'>
             <Grid.Row>
               <Grid.Column width={8}>
-                <Header as='h3' style={{ fontSize : '2em' }}>We Help Companies and Companions</Header>
+                <Header as='h3' style={{ fontSize : '2em' }}>Cabinas y Cabanas con todas las comodidades</Header>
                 <p style={{ fontSize : '1.33em' }}>
-                  We can give your company superpowers to do things that they never thought possible. Let us delight
-                  your customers and empower your needs... through pure data analytics.
+                  Nuestras cabinas cuentan con todos los servicios y a 10 minutos del centro de San Isidro de El General
                 </p>
-                <Header as='h3' style={{ fontSize : '2em' }}>We Make Bananas That Can Dance</Header>
+                <Header as='h3' style={{ fontSize : '2em' }}>Amplio Parqueo</Header>
                 <p style={{ fontSize : '1.33em' }}>
-                  Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.
+                  Le ofrecemos un amplio y seguro parqueo.
                 </p>
               </Grid.Column>
               <Grid.Column floated='right' width={6}>
@@ -78,13 +73,28 @@ class Home extends Component {
                   bordered
                   rounded
                   size='large'
-                  src='/assets/images/wireframe/white-image.png'
+                  src={bathImg}
                 />
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
-              <Grid.Column textAlign='center'>
-                <Button size='huge'>Check Them Out</Button>
+              <Grid.Column width={8}>
+                <Header as='h3' style={{ fontSize : '2em' }}>Aire Acondicionado</Header>
+                <p style={{ fontSize : '1.33em' }}>
+                  Aire fresco siempre.
+                </p>
+                <Header as='h3' style={{ fontSize : '2em' }}>WiFi</Header>
+                <p style={{ fontSize : '1.33em' }}>
+                 Contamos con internet de alta velocidad para que puedas disfrutar de tu contenido favorito.
+                </p>
+              </Grid.Column>
+              <Grid.Column floated='right' width={6}>
+                <Image
+                  bordered
+                  rounded
+                  size='large'
+                  src={bathImg}
+                />
               </Grid.Column>
             </Grid.Row>
           </Grid>

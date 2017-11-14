@@ -2,7 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 // const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   target  : 'web',
@@ -55,7 +55,6 @@ module.exports = {
     ],
   },
   plugins : [
-    new BundleAnalyzerPlugin(),
     new webpack.DefinePlugin({
       'process.env' : {
         'NODE_ENV' : JSON.stringify('production')
