@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { renderRoutes } from 'react-router-config';
 
-import TopMenu from './components/Menu/index';
+import TopMenu from './components/Menu';
+import Footer from './components/Footer';
 import { fetchCurrentUser } from './actions';
+
 
 class App extends Component {
   constructor (props) {
@@ -16,6 +18,7 @@ class App extends Component {
         <div>
           { renderRoutes(this.props.route.routes) }
         </div>
+        <Footer />
       </div>
     )
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Button,
+  Button, Card,
   Container,
   Divider,
   Grid,
@@ -47,7 +47,7 @@ class Home extends Component {
               </Header>
               <Header
                 as='h2'
-                content='Lugar perfecto para descansar'
+                content=''
                 inverted
                 style={{ fontSize : '1.7em', fontWeight : 'normal' }}
               />
@@ -59,14 +59,20 @@ class Home extends Component {
           <Grid container stackable verticalAlign='middle'>
             <Grid.Row>
               <Grid.Column width={8}>
-                <Header as='h3' style={{ fontSize : '2em' }}>Cabinas y Cabanas con todas las comodidades</Header>
-                <p style={{ fontSize : '1.33em' }}>
-                  Nuestras cabinas cuentan con todos los servicios y a 10 minutos del centro de San Isidro de El General
-                </p>
-                <Header as='h3' style={{ fontSize : '2em' }}>Amplio Parqueo</Header>
-                <p style={{ fontSize : '1.33em' }}>
-                  Le ofrecemos un amplio y seguro parqueo.
-                </p>
+                <Card>
+                  <Image src={bathImg} />
+                  <Card.Content>
+                    <Card.Header>Daniel</Card.Header>
+                    <Card.Meta>Joined in 2016</Card.Meta>
+                    <Card.Description>Daniel is a comedian living in Nashville.</Card.Description>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <a>
+                      <Icon name='user' />
+                      10 Friends
+                    </a>
+                  </Card.Content>
+                </Card>
               </Grid.Column>
               <Grid.Column floated='right' width={6}>
                 <Image
@@ -147,36 +153,7 @@ class Home extends Component {
           </Container>
         </Segment>
 
-        <Segment inverted vertical style={{ padding : '5em 0em' }}>
-          <Container>
-            <Grid divided inverted stackable>
-              <Grid.Row>
-                <Grid.Column width={3}>
-                  <Header inverted as='h4' content='About'/>
-                  <List link inverted>
-                    <List.Item as='a'>Sitemap</List.Item>
-                    <List.Item as='a'>Contact Us</List.Item>
-                    <List.Item as='a'>Religious Ceremonies</List.Item>
-                    <List.Item as='a'>Gazebo Plans</List.Item>
-                  </List>
-                </Grid.Column>
-                <Grid.Column width={3}>
-                  <Header inverted as='h4' content='Services'/>
-                  <List link inverted>
-                    <List.Item as='a'>Banana Pre-Order</List.Item>
-                    <List.Item as='a'>DNA FAQ</List.Item>
-                    <List.Item as='a'>How To Access</List.Item>
-                    <List.Item as='a'>Favorite X-Men</List.Item>
-                  </List>
-                </Grid.Column>
-                <Grid.Column width={7}>
-                  <Header as='h4' inverted>Footer Header</Header>
-                  <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Container>
-        </Segment>
+
       </div>
     )
   }

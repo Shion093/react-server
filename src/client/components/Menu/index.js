@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import {
-  Button, Container, Form, Grid, Header, Image, Menu, Message, Modal, Segment,
-  Visibility
+  Button,
+  Container,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Menu,
+  Message,
+  Modal,
+  Segment,
+  Visibility,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -172,7 +181,7 @@ class TopMenu extends Component {
   renderMenuItems = () => (
     <Container>
       <Menu.Item as={Link} to='/' active={this.isActive('/')}>Inicio</Menu.Item>
-      <Menu.Item as={Link} to='/users' active={this.isActive('/users')}>Galeria</Menu.Item>
+      <Menu.Item as={Link} to='/galeria' active={this.isActive('/galeria')}>Galeria</Menu.Item>
       {
         this.props.auth &&
         <Menu.Item as={Link} to='/admins' active={this.isActive('/admins')}>Admins</Menu.Item>

@@ -33,7 +33,7 @@ module.exports = {
         use: ExtractTextPlugin.extract([ 'css-loader', 'less-loader' ])
       },
       {
-        test   : /\.(png|woff|woff2|eot|ttf|svg|jpg)$/,
+        test   : /\.(png|woff|woff2|eot|ttf|svg|jpg|gif)$/,
         loader : 'url-loader?limit=100000'
       },
     ],

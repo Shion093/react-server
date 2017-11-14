@@ -1,6 +1,6 @@
 import App from './App';
 import NotFound from './pages/NotFound';
-import Users from './pages/Users';
+import Gallery from './pages/Gallery';
 import Home from './pages/Home/index';
 import Admins from './pages/AdminsList';
 
@@ -14,8 +14,8 @@ export default [
         exact : true,
       },
       {
-        ...Users,
-        path : '/users',
+        ...Gallery,
+        path : '/galeria',
       },
       {
         ...Admins,
