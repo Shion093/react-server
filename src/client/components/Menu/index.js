@@ -56,7 +56,7 @@ class TopMenu extends Component {
       {
         this.props.auth
           ? <Menu.Item className='item'>
-            <Image avatar src={this.props.auth.profile} />
+            <Image avatar src={this.props.auth.picture} />
             <Button as='a' href='api/v1/auth/logout' inverted>Cerrar Sesion</Button>
           </Menu.Item>
           : <Menu.Item className='item'>
