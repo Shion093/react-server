@@ -2,9 +2,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 // const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
+  target  : 'web',
   devtool : 'cheap-module-source-map',
   module  : {
     rules : [
@@ -17,13 +18,22 @@ module.exports = {
             'transform-decorators-legacy',
             'transform-class-properties',
             'transform-react-constant-elements',
-            'transform-react-inline-elements'
+            'transform-react-inline-elements',
+            [
+              'lodash',
+              {
+                'id' : [
+                  'lodash',
+                  'semantic-ui-react',
+                ]
+              }
+            ]
           ],
           presets : [
             'es2015',
             'react',
             'stage-0',
-            ['env', { 'modules': false, targets : { browsers : ['last 2 versions'], 'node': 4 } }]
+            ['env', {'modules' : false, targets : {browsers : ['last 2 versions'], 'node' : 4}}]
           ]
         }
       },
@@ -35,8 +45,8 @@ module.exports = {
         })
       },
       {
-        test: /\.less$/i,
-        use: ExtractTextPlugin.extract([ 'css-loader', 'less-loader' ])
+        test : /\.less$/i,
+        use  : ExtractTextPlugin.extract(['css-loader', 'less-loader'])
       },
       {
         test   : /\.(png|woff|woff2|eot|ttf|svg|jpg)$/,
@@ -45,10 +55,15 @@ module.exports = {
     ],
   },
   plugins : [
+    new BundleAnalyzerPlugin(),
     new webpack.DefinePlugin({
       'process.env' : {
         'NODE_ENV' : JSON.stringify('production')
       }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize : true,
+      debug    : false
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
@@ -59,7 +74,7 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name     : 'vendor',
       filename : 'vendor.js',
-      minChunks (module) {
+      minChunks(module) {
         return module.context &&
           module.context.indexOf('node_modules') >= 0;
       }
