@@ -19,10 +19,11 @@ import { connect } from 'react-redux';
 import { createUser, loginUser } from '../../actions/index';
 
 import './style.less';
+import ModalCont from './ModalCont';
 
 class TopMenu extends Component {
-  constructor (props) {
-    super(props);
+  constructor () {
+    super();
     this.state = {
       name : '',
       email : '',
@@ -38,11 +39,11 @@ class TopMenu extends Component {
 
   handleSubmit = () => {
     this.props.createUser(this.state);
-  }
+  };
 
   handleSubmitLogin = () => {
     this.props.loginUser(this.state);
-  }
+  };
 
   renderFixedMenu = (visible) => {
     if (visible) return (
@@ -60,139 +61,106 @@ class TopMenu extends Component {
     );
   };
 
-  renderAuthButton = () => (
-    <Menu.Menu position='right'>
-      {
-        this.props.auth
-          ? <Menu.Item className='item'>
+  renderAuthButton = () => {
+    if (this.props.auth) {
+      return (
+        <Menu.Menu position='right'>
+          <Menu.Item className='item'>
             <Image avatar src={this.props.auth.picture} />
             <Button as='a' href='api/v1/auth/logout' inverted>Cerrar Sesion</Button>
           </Menu.Item>
-          : <Menu.Item className='item'>
-            <Modal trigger={<Button as='a' inverted>Iniciar Session</Button>}>
-              <Modal.Content>
-                <Grid
-                  textAlign='center'
-                  style={{ height: '100%' }}
-                  verticalAlign='middle'>
-                  <Grid.Column style={{ maxWidth: 450 }}>
-                    <Header as='h2' color='teal' textAlign='center'>
-                      {' '}Log-in to your account
-                    </Header>
-                    <Form size='large' onSubmit={this.handleSubmitLogin}>
-                      <Segment stacked>
-                        <Form.Input
-                          fluid
-                          icon='user'
-                          iconPosition='left'
-                          placeholder='E-mail address'
-                          name='email'
-                          value={this.state.email}
-                          onChange={this.handleChange}
-                        />
-                        <Form.Input
-                          fluid
-                          icon='lock'
-                          iconPosition='left'
-                          placeholder='Password'
-                          type='password'
-                          name='password'
-                          value={this.state.password}
-                          onChange={this.handleChange}
-                        />
-                        <Form.Button color='teal' fluid size='large'>Iniciar Sesion</Form.Button>
-                      </Segment>
-                    </Form>
-                    <Message>
-                      New to us? <a href='#'>Sign Up</a>
-                    </Message>
-                    <Button as='a' href='api/v1/auth/google'>Con Google</Button>
-                  </Grid.Column>
-                </Grid>
-              </Modal.Content>
-            </Modal>
-          </Menu.Item>
-      }
-      {
-        !this.props.auth &&
-        <Menu.Item>
-          <Modal trigger={<Button as='a' inverted>Sign Up</Button>}>
-            <Modal.Content>
-              <Grid
-                textAlign='center'
-                style={{ height: '100%' }}
-                verticalAlign='middle'>
-                <Grid.Column style={{ maxWidth: 450 }}>
-                    <Modal.Description>
-                      <Header>Crear cuenta</Header>
-                    </Modal.Description>
-                    <Segment stacked>
-                      <Form onSubmit={ this.handleSubmit } size='large'>
-                        <Form.Input
-                          fluid
-                          icon='user'
-                          iconPosition='left'
-                          placeholder='Name'
-                          name='name'
-                          value={ this.state.name }
-                          onChange={ this.handleChange }
-                        />
-                        <Form.Input
-                          fluid
-                          icon='user'
-                          iconPosition='left'
-                          placeholder='Email'
-                          name='email'
-                          value={ this.state.email }
-                          onChange={ this.handleChange }
-                        />
-                        <Form.Input
-                          fluid
-                          icon='user'
-                          iconPosition='left'
-                          placeholder='Password'
-                          name='password'
-                          value={ this.state.password }
-                          onChange={ this.handleChange
-                          }/>
-                        <Form.Input
-                          fluid
-                          icon='user'
-                          iconPosition='left'
-                          placeholder='Phone'
-                          name='phone'
-                          value={ this.state.phone }
-                          onChange={ this.handleChange }
-                        />
-                        <Form.Checkbox label='I agree to the Terms and Conditions'/>
-                        <Form.Button color='teal' fluid size='large'>Crear</Form.Button>
-                      </Form>
-                    </Segment>
-                </Grid.Column>
-              </Grid>
-            </Modal.Content>
-          </Modal>
+        </Menu.Menu>
+      )
+    }
+    return (
+      <Menu.Menu position='right'>
+        <Menu.Item className='item'>
+          <ModalCont {...{ buttonText : 'Iniciar Sesion', header : 'Inicio de Sesion'}}>
+            <Form size='large' onSubmit={this.handleSubmitLogin}>
+              <Segment stacked>
+                <Form.Input
+                  fluid
+                  icon='user'
+                  iconPosition='left'
+                  placeholder='E-mail address'
+                  name='email'
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                />
+                <Form.Input
+                  fluid
+                  icon='lock'
+                  iconPosition='left'
+                  placeholder='Password'
+                  type='password'
+                  name='password'
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
+                <Form.Button color='teal' fluid size='large'>Iniciar Sesion</Form.Button>
+              </Segment>
+            </Form>
+          </ModalCont>
         </Menu.Item>
-      }
-    </Menu.Menu>
-  );
-
+        <Menu.Item>
+          <ModalCont {...{ buttonText : 'Crear Cuenta', header : 'Crear Cuenta'}}>
+            <Form onSubmit={ this.handleSubmit } size='large'>
+              <Form.Input
+                fluid
+                icon='user'
+                iconPosition='left'
+                placeholder='Name'
+                name='name'
+                value={ this.state.name }
+                onChange={ this.handleChange }
+              />
+              <Form.Input
+                fluid
+                icon='user'
+                iconPosition='left'
+                placeholder='Email'
+                name='email'
+                value={ this.state.email }
+                onChange={ this.handleChange }
+              />
+              <Form.Input
+                fluid
+                icon='user'
+                iconPosition='left'
+                placeholder='Password'
+                name='password'
+                value={ this.state.password }
+                onChange={ this.handleChange
+                }/>
+              <Form.Input
+                fluid
+                icon='user'
+                iconPosition='left'
+                placeholder='Phone'
+                name='phone'
+                value={ this.state.phone }
+                onChange={ this.handleChange }
+              />
+              <Form.Checkbox label='I agree to the Terms and Conditions'/>
+              <Form.Button color='teal' fluid size='large'>Crear</Form.Button>
+            </Form>
+          </ModalCont>
+        </Menu.Item>
+      </Menu.Menu>
+    )
+  }
 
   renderMenuItems = () => (
     <Container>
       <Menu.Item as={Link} to='/' active={this.isActive('/')}>Inicio</Menu.Item>
       <Menu.Item as={Link} to='/galeria' active={this.isActive('/galeria')}>Galeria</Menu.Item>
-      {
-        this.props.auth &&
-        <Menu.Item as={Link} to='/admins' active={this.isActive('/admins')}>Admins</Menu.Item>
-      }
+      { this.props.auth && <Menu.Item as={Link} to='/admins' active={this.isActive('/admins')}>Admins</Menu.Item> }
       {this.renderAuthButton()}
     </Container>
   );
 
   render () {
     const { visible } = this.state;
-    console.log();
     return (
       <div id='MenuStyle'>
         { visible && this.renderFixedMenu(visible) }

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { renderRoutes } from 'react-router-config';
 
-import TopMenu from './components/Menu';
+import Menu from './components/Menu';
 import Footer from './components/Footer';
 import { fetchCurrentUser } from './actions';
-
 
 class App extends Component {
   constructor (props) {
@@ -14,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <TopMenu currentRoute={this.props.location.pathname}/>
+        <Menu currentRoute={this.props.location.pathname}/>
         <div>
           { renderRoutes(this.props.route.routes) }
         </div>
