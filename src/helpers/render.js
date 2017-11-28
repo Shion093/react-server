@@ -25,6 +25,7 @@ export default (req, store, context) => {
       <head>
       ${helmet.title.toString()}
       ${helmet.meta.toString()}
+       <meta name="viewport" content="width=device-width, initial-scale=1">
        <link rel="stylesheet" href="bundle.css">
        <link rel="stylesheet" href="vendor.css">
       </head>

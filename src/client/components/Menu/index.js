@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import {
   Button,
-  Container,
+  Container, Dropdown,
   Form,
   Grid,
-  Header,
+  Header, Icon,
   Image,
   Menu,
   Message,
   Modal,
   Segment,
+  Responsive,
   Visibility,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
@@ -61,6 +62,84 @@ class TopMenu extends Component {
     );
   };
 
+  renderLogin = () => {
+    return (
+      <ModalCont { ...{ buttonText : 'Iniciar Sesion', header : 'Inicio de Sesion' } }>
+        <Form size='large' onSubmit={ this.handleSubmitLogin }>
+          <Segment stacked>
+            <Form.Input
+              fluid
+              icon='user'
+              iconPosition='left'
+              placeholder='E-mail address'
+              name='email'
+              value={ this.state.email }
+              onChange={ this.handleChange }
+            />
+            <Form.Input
+              fluid
+              icon='lock'
+              iconPosition='left'
+              placeholder='Password'
+              type='password'
+              name='password'
+              value={ this.state.password }
+              onChange={ this.handleChange }
+            />
+            <Form.Button color='teal' fluid size='large'>Iniciar Sesion</Form.Button>
+          </Segment>
+        </Form>
+      </ModalCont>
+    )
+  }
+
+  renderSignUp = () => {
+    return (
+      <ModalCont {...{ buttonText : 'Crear Cuenta', header : 'Crear Cuenta'}}>
+        <Form onSubmit={ this.handleSubmit } size='large'>
+          <Form.Input
+            fluid
+            icon='user'
+            iconPosition='left'
+            placeholder='Name'
+            name='name'
+            value={ this.state.name }
+            onChange={ this.handleChange }
+          />
+          <Form.Input
+            fluid
+            icon='user'
+            iconPosition='left'
+            placeholder='Email'
+            name='email'
+            value={ this.state.email }
+            onChange={ this.handleChange }
+          />
+          <Form.Input
+            fluid
+            icon='user'
+            iconPosition='left'
+            placeholder='Password'
+            name='password'
+            value={ this.state.password }
+            onChange={ this.handleChange
+            }/>
+          <Form.Input
+            fluid
+            icon='user'
+            iconPosition='left'
+            placeholder='Phone'
+            name='phone'
+            value={ this.state.phone }
+            onChange={ this.handleChange }
+          />
+          <Form.Checkbox label='I agree to the Terms and Conditions'/>
+          <Form.Button color='teal' fluid size='large'>Crear</Form.Button>
+        </Form>
+      </ModalCont>
+    )
+  }
+
   renderAuthButton = () => {
     if (this.props.auth) {
       return (
@@ -75,76 +154,10 @@ class TopMenu extends Component {
     return (
       <Menu.Menu position='right'>
         <Menu.Item className='item'>
-          <ModalCont {...{ buttonText : 'Iniciar Sesion', header : 'Inicio de Sesion'}}>
-            <Form size='large' onSubmit={this.handleSubmitLogin}>
-              <Segment stacked>
-                <Form.Input
-                  fluid
-                  icon='user'
-                  iconPosition='left'
-                  placeholder='E-mail address'
-                  name='email'
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  fluid
-                  icon='lock'
-                  iconPosition='left'
-                  placeholder='Password'
-                  type='password'
-                  name='password'
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                />
-                <Form.Button color='teal' fluid size='large'>Iniciar Sesion</Form.Button>
-              </Segment>
-            </Form>
-          </ModalCont>
+          { this.renderLogin() }
         </Menu.Item>
         <Menu.Item>
-          <ModalCont {...{ buttonText : 'Crear Cuenta', header : 'Crear Cuenta'}}>
-            <Form onSubmit={ this.handleSubmit } size='large'>
-              <Form.Input
-                fluid
-                icon='user'
-                iconPosition='left'
-                placeholder='Name'
-                name='name'
-                value={ this.state.name }
-                onChange={ this.handleChange }
-              />
-              <Form.Input
-                fluid
-                icon='user'
-                iconPosition='left'
-                placeholder='Email'
-                name='email'
-                value={ this.state.email }
-                onChange={ this.handleChange }
-              />
-              <Form.Input
-                fluid
-                icon='user'
-                iconPosition='left'
-                placeholder='Password'
-                name='password'
-                value={ this.state.password }
-                onChange={ this.handleChange
-                }/>
-              <Form.Input
-                fluid
-                icon='user'
-                iconPosition='left'
-                placeholder='Phone'
-                name='phone'
-                value={ this.state.phone }
-                onChange={ this.handleChange }
-              />
-              <Form.Checkbox label='I agree to the Terms and Conditions'/>
-              <Form.Button color='teal' fluid size='large'>Crear</Form.Button>
-            </Form>
-          </ModalCont>
+          { this.renderSignUp() }
         </Menu.Item>
       </Menu.Menu>
     )
@@ -155,7 +168,7 @@ class TopMenu extends Component {
       <Menu.Item as={Link} to='/' active={this.isActive('/')}>Inicio</Menu.Item>
       <Menu.Item as={Link} to='/galeria' active={this.isActive('/galeria')}>Galeria</Menu.Item>
       { this.props.auth && <Menu.Item as={Link} to='/admins' active={this.isActive('/admins')}>Admins</Menu.Item> }
-      {this.renderAuthButton()}
+      { this.renderAuthButton() }
     </Container>
   );
 
