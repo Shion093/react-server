@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import {
   Button,
-  Container, Dropdown,
+  Container,
   Form,
-  Grid,
-  Header, Icon,
   Image,
   Menu,
-  Message,
-  Modal,
   Segment,
-  Responsive,
   Visibility,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';

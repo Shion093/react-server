@@ -1,28 +1,25 @@
 import React, { Component } from 'react';
 import {
-  Button, Card,
+  Button,
   Container,
   Divider,
   Grid,
   Header,
-  Icon,
   Image,
   Segment,
 } from 'semantic-ui-react';
 
 import './style.less';
 
-import sliderImg from './bg.jpg';
 import Slider from 'react-slick';
 
 class Gallery extends Component {
-  constructor (props) {
-    super(props);
+  constructor () {
+    super();
     this.state = {};
   }
 
   render () {
-    const { visible } = this.state;
     const settings = {
       dots           : true,
       infinite       : true,
