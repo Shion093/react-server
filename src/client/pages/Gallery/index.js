@@ -13,6 +13,8 @@ import './style.less';
 
 import Slider from 'react-slick';
 
+const baseUrl = 'http://dz0tywc7nnb41.cloudfront.net/slider';
+
 class Gallery extends Component {
   constructor () {
     super();
@@ -21,6 +23,9 @@ class Gallery extends Component {
 
   render () {
     const settings = {
+      customPaging: (i) => {
+        return <a><img src={`${baseUrl}/slider${i+1}.jpeg`}/></a>
+      },
       dots           : true,
       infinite       : true,
       speed          : 500,
@@ -34,10 +39,10 @@ class Gallery extends Component {
       <div id='Home'>
         <Segment style={ { padding : 0, borderRadius : 0, border : 'none' } }>
           <Slider { ...settings }>
-            <div><Segment style={ { minHeight : '100%', borderRadius : 0, border : 'none' } } className='title'/></div>
-            <div><Segment style={ { minHeight : '100%', borderRadius : 0, border : 'none' } } className='title'/></div>
-            <div><Segment style={ { minHeight : '100%', borderRadius : 0, border : 'none' } } className='title'/></div>
-            <div><Segment style={ { minHeight : '100%', borderRadius : 0, border : 'none' } } className='title'/></div>
+            <div style={ { minHeight : '100%', borderRadius : 0, border : 'none' }}>
+              <img src={`${baseUrl}/slider/slider4.jpeg`} alt=""/>
+            </div>
+            {/*<div><Segment style={ { minHeight : '100%', borderRadius : 0, border : 'none' } } className='title'/></div>*/}
           </Slider>
         </Segment>
         <Segment style={ { padding : '0em' } } vertical>

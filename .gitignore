@@ -1,6 +1,4 @@
 .idea
 /node_modules
-/build
-/public
 .DS_Store
 package-lock.json
