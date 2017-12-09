@@ -11,7 +11,7 @@ import {
 
 import './style.less';
 
-import bathImg from './cabin-bath.jpg';
+import bathImg from '../../images/cabin-bath.jpg';
 
 class Home extends Component {
   constructor () {

@@ -1,7 +1,7 @@
 import App from './App';
 import NotFound from './pages/NotFound';
 import Gallery from './pages/Gallery';
-import Home from './pages/Home/index';
+import Home from './pages/Home';
 import Admins from './pages/AdminsList';
 
 export default [
