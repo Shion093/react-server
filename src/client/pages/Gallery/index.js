@@ -8,6 +8,7 @@ import {
   Image,
   Segment,
 } from 'semantic-ui-react';
+import _ from 'lodash';
 
 import './style.less';
 
@@ -23,9 +24,9 @@ class Gallery extends Component {
 
   render () {
     const settings = {
-      customPaging: (i) => {
-        return <a><img src={`${baseUrl}/slider${i+1}.jpeg`}/></a>
-      },
+      // customPaging: (i) => {
+      //   return <a><img src={`${baseUrl}/slider${i+1}.jpeg`}/></a>
+      // },
       dots           : true,
       infinite       : true,
       speed          : 500,
@@ -39,9 +40,16 @@ class Gallery extends Component {
       <div id='Home'>
         <Segment style={ { padding : 0, borderRadius : 0, border : 'none' } }>
           <Slider { ...settings }>
-            <div style={ { minHeight : '100%', borderRadius : 0, border : 'none' }}>
-              <img src={`${baseUrl}/slider4.jpeg`} alt=""/>
-            </div>
+            {
+              _.map(_.range(1, 15), (i) => {
+                return (
+                  <div key={_.uniqueId(i)} style={ { minHeight : '100%', borderRadius : 0, border : 'none' }}>
+                    <img src={`${baseUrl}/slider${i}.jpeg`} alt=""/>
+                  </div>
+                )
+              })
+            }
+
             {/*<div><Segment style={ { minHeight : '100%', borderRadius : 0, border : 'none' } } className='title'/></div>*/}
           </Slider>
         </Segment>
