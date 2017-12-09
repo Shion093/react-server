@@ -14,7 +14,7 @@ import './style.less';
 
 import Slider from 'react-slick';
 
-const baseUrl = 'http://dz0tywc7nnb41.cloudfront.net/slider';
+const baseUrl = 'https://dz0tywc7nnb41.cloudfront.net/slider';
 
 class Gallery extends Component {
   constructor () {
