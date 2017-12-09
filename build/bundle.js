@@ -1242,7 +1242,7 @@ var Gallery = function (_Component) {
             _react2.default.createElement(
               'div',
               { style: { minHeight: '100%', borderRadius: 0, border: 'none' } },
-              _react2.default.createElement('img', { src: baseUrl + '/slider/slider4.jpeg', alt: '' })
+              _react2.default.createElement('img', { src: baseUrl + '/slider4.jpeg', alt: '' })
             )
           )
         ),

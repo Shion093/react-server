@@ -40,7 +40,7 @@ class Gallery extends Component {
         <Segment style={ { padding : 0, borderRadius : 0, border : 'none' } }>
           <Slider { ...settings }>
             <div style={ { minHeight : '100%', borderRadius : 0, border : 'none' }}>
-              <img src={`${baseUrl}/slider/slider4.jpeg`} alt=""/>
+              <img src={`${baseUrl}/slider4.jpeg`} alt=""/>
             </div>
             {/*<div><Segment style={ { minHeight : '100%', borderRadius : 0, border : 'none' } } className='title'/></div>*/}
           </Slider>
