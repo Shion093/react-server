@@ -3,6 +3,7 @@ export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
 export const FETCH_ADMINS = 'FETCH_ADMINS';
 export const CREATE_USER = 'CREATE_USER';
 export const LOGIN_USER = 'LOGIN_USER';
+export const SEND_EMAIL = 'SEND_EMAIL';
 
 export const fetchUsers = () => async (dispatch, getState, axios) => {
   const res = await axios.get('/users');
@@ -26,6 +27,15 @@ export const fetchAdmins = () => async (dispatch, getState, axios) => {
 export const createUser = (user) => async (dispatch, getState, axios) => {
   try {
     const res = await axios.post('/user/create', user);
+    dispatch({ type : CREATE_USER, payload : res, });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const sendEmail = (user) => async (dispatch, getState, axios) => {
+  try {
+    const res = await axios.post('/user/send', user);
     dispatch({ type : CREATE_USER, payload : res, });
   } catch (err) {
     console.log(err);

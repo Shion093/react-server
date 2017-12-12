@@ -12,6 +12,9 @@ import {
 import './style.less';
 
 import bathImg from '../../images/cabin-bath.jpg';
+import room1 from '../../images/room.jpg';
+import room2 from '../../images/room2.jpg';
+import human from '../../images/human.jpg';
 
 class Home extends Component {
   constructor () {
@@ -33,13 +36,13 @@ class Home extends Component {
               as='h1'
               inverted
               style={ { fontSize : '4em', fontWeight : 'normal', marginBottom : 0, marginTop : '3em' } }>
-              Cabinas y Cabanas
+              Cabinas y Cabañas
             </Header>
             <Header
               as='h1'
               inverted
               style={ { fontSize : '6em', marginBottom : 0, marginTop : 0 } }>
-              Canaveral
+              Cañaveral
             </Header>
             <Header
               as='h2'
@@ -59,45 +62,45 @@ class Home extends Component {
                   <Image src={ bathImg }/>
                   <Card.Content>
                     <Card.Header>Cabina</Card.Header>
-                    <Card.Meta>Joined in 2016</Card.Meta>
-                    <Card.Description>Daniel is a comedian living in Nashville.</Card.Description>
+                    <Card.Meta>Todos los servicios</Card.Meta>
+                    <Card.Description>Cabinas con todas las comodidades</Card.Description>
                   </Card.Content>
                   <Card.Content extra>
                     <a>
                       <Icon name='user'/>
-                      10 Friends
+                      2 personas
                     </a>
                   </Card.Content>
                 </Card>
               </Grid.Column>
               <Grid.Column>
                 <Card>
-                  <Image src={ bathImg }/>
+                  <Image src={ room1 }/>
                   <Card.Content>
                     <Card.Header>Cabana</Card.Header>
-                    <Card.Meta>Joined in 2016</Card.Meta>
-                    <Card.Description>Daniel is a comedian living in Nashville.</Card.Description>
+                    <Card.Meta>Individual</Card.Meta>
+                    <Card.Description>Cabina acogedora</Card.Description>
                   </Card.Content>
                   <Card.Content extra>
                     <a>
                       <Icon name='user'/>
-                      10 Friends
+                      1 persona
                     </a>
                   </Card.Content>
                 </Card>
               </Grid.Column>
               <Grid.Column>
                 <Card>
-                  <Image src={ bathImg }/>
+                  <Image src={ room2 }/>
                   <Card.Content>
-                    <Card.Header>Cabana</Card.Header>
-                    <Card.Meta>Joined in 2016</Card.Meta>
-                    <Card.Description>Daniel is a comedian living in Nashville.</Card.Description>
+                    <Card.Header>Cabina</Card.Header>
+                    <Card.Meta>Amplia</Card.Meta>
+                    <Card.Description>Amplia cabina para varias personas</Card.Description>
                   </Card.Content>
                   <Card.Content extra>
                     <a>
                       <Icon name='user'/>
-                      10 Friends
+                      2-4 Personas
                     </a>
                   </Card.Content>
                 </Card>
@@ -113,14 +116,28 @@ class Home extends Component {
                 <p style={ { fontSize : '1.33em' } }>
                   Contamos con internet de alta velocidad para que puedas disfrutar de tu contenido favorito.
                 </p>
-              </Grid.Column>
-              <Grid.Column floated='right' width={ 6 }>
-                <Image
-                  bordered
-                  rounded
-                  size='large'
-                  src={ bathImg }
-                />
+
+                <Header as='h3' style={ { fontSize : '2em' } }>Parqueo Privado</Header>
+                <p style={ { fontSize : '1.33em' } }>
+                  Parqueo seguro las 24 horas
+                </p>
+
+
+                <Header as='h3' style={ { fontSize : '2em' } }>Agua Caliente</Header>
+                <p style={ { fontSize : '1.33em' } }>
+                  Aguan caliente siempre disponible gracias a nuestros tanques de agua
+                </p>
+
+
+                <Header as='h3' style={ { fontSize : '2em' } }>TV con Cable</Header>
+                <p style={ { fontSize : '1.33em' } }>
+                  Puedes disfrutar de tus shows favoritos.
+                </p>
+
+                <Header as='h3' style={ { fontSize : '2em' } }>Cocina</Header>
+                <p style={ { fontSize : '1.33em' } }>
+                  Espacio exclusivos para huespedes, donde pueden cocinar.
+                </p>
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -136,7 +153,7 @@ class Home extends Component {
               <Grid.Column style={ { paddingBottom : '5em', paddingTop : '5em' } }>
                 <Header as='h3' style={ { fontSize : '2em' } }>Nuestros clientes nos respaldan</Header>
                 <p style={ { fontSize : '1.33em' } }>
-                  <Image avatar src='/assets/images/avatar/large/nan.jpg'/>
+                  <Image avatar src={human} />
                   <b>Nancy</b> Un lugar muy tranquilo y seguro
                 </p>
               </Grid.Column>

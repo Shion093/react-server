@@ -96,7 +96,7 @@ class TopMenu extends Component {
             fluid
             icon='user'
             iconPosition='left'
-            placeholder='Name'
+            placeholder='Nombre'
             name='name'
             value={ this.state.name }
             onChange={ this.handleChange }
@@ -114,7 +114,7 @@ class TopMenu extends Component {
             fluid
             icon='user'
             iconPosition='left'
-            placeholder='Password'
+            placeholder='Contraseña'
             name='password'
             value={ this.state.password }
             onChange={ this.handleChange
@@ -123,12 +123,12 @@ class TopMenu extends Component {
             fluid
             icon='user'
             iconPosition='left'
-            placeholder='Phone'
+            placeholder='Teléfono'
             name='phone'
             value={ this.state.phone }
             onChange={ this.handleChange }
           />
-          <Form.Checkbox label='I agree to the Terms and Conditions'/>
+          <Form.Checkbox label='Acepto los terminos y condiciones'/>
           <Form.Button color='teal' fluid size='large'>Crear</Form.Button>
         </Form>
       </ModalCont>
@@ -162,6 +162,8 @@ class TopMenu extends Component {
     <Container>
       <Menu.Item as={Link} to='/' active={this.isActive('/')}>Inicio</Menu.Item>
       <Menu.Item as={Link} to='/galeria' active={this.isActive('/galeria')}>Galeria</Menu.Item>
+      <Menu.Item as={Link} to='/reservar' active={this.isActive('/reservar')}>Reservar</Menu.Item>
+      <Menu.Item as={Link} to='/nosotros' active={this.isActive('/nosotros')}>Nosotros</Menu.Item>
       { this.props.auth && <Menu.Item as={Link} to='/admins' active={this.isActive('/admins')}>Admins</Menu.Item> }
       { this.renderAuthButton() }
     </Container>
